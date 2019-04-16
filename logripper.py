@@ -20,7 +20,8 @@ if any("KUBERNETES" in k for k in os.environ):
     wt_handler = watchtower.CloudWatchLogHandler(
         boto3_session=boto3_session,
         log_group="logripper",
-        stream_name="testing")
+        stream_name="testing_with_logstashformatter")
+    wt_handler.setFormatter(LogstashFormatterV1())
 
     logging.root.setLevel("INFO")
     logging.root.addHandler(handler)
